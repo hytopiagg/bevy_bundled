@@ -2,9 +2,15 @@
 ## A small derive macro for turning large structs into bundles without creating types for each field
 
 ## To do
-* [ ] Documentation
-* [ ] Bundled Resources
+* [ ] Accessibility
+    * [ ] Documentation
+    * [ ] Better Errors
 * [ ] Better Examples
+* [ ] Unnamed/Tuple Structs
+* [ ] Marker Components
+    * Possible `#[marked]` attribute which creates a simple `Marker` type and field
+        * Should automatically be added when `.into` is called from base struct
+* [ ] Bundled Resources
 
 ## Limitations
 * You can't use `impl`s on `Bundled` types

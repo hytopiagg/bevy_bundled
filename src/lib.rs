@@ -38,7 +38,7 @@ pub fn bundle(input: TokenStream) -> TokenStream {
                         );
                         let field_ty = &x.ty;
                         quote! {
-                        type #field_ident =
+                        pub type #field_ident =
                             #mod_ident::#component_ident<#i, #field_ty>;
                         }
                     });
@@ -62,6 +62,7 @@ pub fn bundle(input: TokenStream) -> TokenStream {
                     #[automatically_derived]
                     impl #ident {
                         #(#fields_trait_impl)*
+                        pub type Bundled = #mod_ident::#bundle_ident;
                     }
 
 
