@@ -1,8 +1,14 @@
+#![feature(inherent_associated_types)]
+
 use bevy_bundled::*;
 
 #[derive(Bundled)]
 struct EntityData {
-    pos: Vec3,
-    vel: Vec3,
+    pos: f32,
+    vel: f32,
     health: f32,
+}
+
+fn main() {
+    // TODO
 }
