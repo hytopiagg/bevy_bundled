@@ -11,6 +11,8 @@
     * Possible `#[marked]` attribute which creates a simple `Marker` type and field
         * Should automatically be added when `.into` is called from base struct
 * [ ] Bundled Resources
+* [ ] Refactoring
+    * [ ] Use `quote_spanned` to ensure hygene
 
 ## Limitations
 * You can't use `impl`s on `Bundled` types

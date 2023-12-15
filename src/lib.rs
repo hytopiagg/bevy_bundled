@@ -1,7 +1,7 @@
 use heck::{AsPascalCase, AsSnakeCase};
 use proc_macro::TokenStream;
 use proc_macro2::Ident;
-use quote::quote;
+use quote::{format_ident, quote};
 use syn::{parse_macro_input, Fields, FieldsNamed, Item};
 
 #[proc_macro_derive(Bundled)]
@@ -12,17 +12,13 @@ pub fn bundle(input: TokenStream) -> TokenStream {
             let ident = &st.ident;
 
             // Identifier for generated internal module
-            let mod_ident = Ident::new(
-                &format!("_{}", AsSnakeCase(st.ident.to_string())),
-                st.ident.span(),
-            );
+            let mod_ident = format_ident!("_{}", AsSnakeCase(st.ident.to_string()).to_string());
 
             // Identifier for component type (effectively type-level map)
-            let component_ident =
-                Ident::new(&format!("{}FieldComponent", st.ident), st.ident.span());
+            let component_ident = format_ident!("{}FieldComponent", st.ident);
 
             // Identifier for generated bundle struct
-            let bundle_ident = Ident::new(&format!("{}Bundle", st.ident), st.ident.span());
+            let bundle_ident = format_ident!("{}Bundle", st.ident);
 
             match st.fields {
                 Fields::Named(FieldsNamed {
