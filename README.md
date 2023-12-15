@@ -1,5 +1,25 @@
 # `bevy_bundled`
-## A small derive macro for turning large structs into bundles without creating types for each field
+A small derive macro for turning structs into bundles without creating types for each field
+
+## What this does
+This crate creates a `Bundled` derive macro, which creates a mirror of your struct in which each field is a component, and the mirror is a bundle
+
+## Minimal example
+```rust
+#[derive(Default, Bundled)]
+struct Player {
+    health: f32,
+    position: Vec3,
+}
+
+fn setup_system(mut commands: Commands) {
+    commands.spawn(Player::default().bundled());
+}
+
+fn health_system(health: Query<&Player::Health>) {
+    // ...
+}
+```
 
 ## To do
 * [ ] Accessibility
