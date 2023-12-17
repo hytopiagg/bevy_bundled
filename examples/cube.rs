@@ -1,7 +1,7 @@
 #![feature(inherent_associated_types)]
 
 use bevy::prelude::*;
-use bevy_bundled::Bundled;
+use bevy_bundled::{Bundled, ResourceBundle};
 
 #[derive(Bundled)]
 struct SceneStyle {
